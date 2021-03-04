@@ -32,10 +32,9 @@ def form_word(letter, int_str):
 
 """This function takes a word, reduces duplicate
 neighbor-characters and returns the result."""
-def reduce_duplicates():
-    test = input("Write a word: ")
+def reduce_duplicates(test):
 
-    temp_test = test[0]
+    temp_test = test[0]   #The first letter in the input will automatically be added to the temporary word we will use in further comparison.
 
     for char in test:
         if char != temp_test[-1]:
@@ -48,17 +47,25 @@ basic = []
 for key in rls.keys():
     basic.append(form_word("S", key))
 
-"""If the tested word is reduced to a word that matches the ones in basic, it's accepted,
+"""Function that gives feedback on the input word. If the tested word is reduced to a word
+that matches the ones in basic, it's accepted,
 otherwise, the user is asked to re-insert a word."""
-if reduce_duplicates() in basic:
-    print("Accepted ")
-else:
-    print("Rejected")
-    print("Available basic combinations: ", basic)
-    ans = input("Would you like to retry?\nyes / no\n")
-    if ans == "yes":
-        reduce_duplicates()
-    elif ans == "no":
-        print("Ok.")
+def accept_reject(lst):
+    trying = input("Write a word: ")
+    reduce_duplicates(trying)
+    if reduce_duplicates(trying) in lst:
+        print("Accepted ")
     else:
-        print("Error")
+        print("Rejected")
+        print("Available basic combinations: ", lst)
+        ans = input("Would you like to retry?\nyes / no\n")
+        if ans == "yes":
+            return accept_reject(lst)
+        elif ans == "no":
+            print("Ok.")
+        else:
+            print("Error")
+            
+
+"""Driver function""" 
+accept_reject(basic)
