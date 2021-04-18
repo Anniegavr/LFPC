@@ -15,4 +15,8 @@ The program automatically records ''A', 'B' and 'C' to be the states (the analog
 
 The transitions are recorded on the go, which means you may play with different test cases.
 
-For this laboratory, Java seemed to offer more control over the tables used to describe the NFA or the DFA, because it allows us to specify the data type for every single piece of information and the structure that stores it. A Python version might be on its way soon.
+For this laboratory, Java seemed to offer more control over the tables used to describe the NFA or the DFA, because it allows us to specify the data type for every single piece of information and the structure that stores it.
+
+Lab 3: Conversion of a Context-Free Grammar to Chomsky's Normal Form
+![image](https://user-images.githubusercontent.com/56108881/115160382-887c6f80-a0a0-11eb-9451-4f35066b1ef0.png)
+![image](https://user-images.githubusercontent.com/56108881/115160396-9af6a900-a0a0-11eb-9294-129f10478260.png)
