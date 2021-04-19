@@ -77,7 +77,7 @@ def split_long_productions(dict):
                 #if the program finds patterns like S0A or S0A1B...:
                 item = item[:1]
                 if item not in new_state.keys():
-                    new_state[item] = key+str(value.index(s))
+                    new_state[item] = key+str(value.index(s))+str(value.index(s))
             elif len(re.findall("[A-Z][0-9]", s)) in range(1,3) and len(s) in range(3, 5):
                 #We make sure productions like S0A1 aren't touched
                 continue
