@@ -2,12 +2,6 @@
 import re
 
 rules = {'S':['bAC', 'B'], 'A' : ['a', 'aS', 'bCaCb'], 'B':['AC', 'bS', 'aAa'], 'C':['_', 'AB'], 'E':['BA']}
-leftRules = []
-rightRules = []
-
-# for key, value in rules:
-#     leftRules.append(key)
-#     rightRules.append(value)
 
 def remove_empty(dict):
     emp = False
