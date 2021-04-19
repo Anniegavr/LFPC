@@ -22,7 +22,7 @@ def remove_empty(dict):
         num = []
         for val in dict.values():
             for s in val:
-                if s.__contains__(guilty):
+                if s.__contains__(guilty):  #guilty = empty string production
                     if s.count(guilty)>1:
                         sn = s[::-1]
                         s = re.sub(guilty, '', s, 1)
@@ -48,7 +48,9 @@ def rename_camels(dict):
                 item = item[:1]
                 if item not in new_state.keys():
                     new_state[item] = key+str(value.index(s))
-                    print(item, new_state[item])
+                    print(item, new_state[item])   
+    #The above code has generated new states for each camel-case
+    #The code below shall perform the replacement
     for _ in range(2):
         for value in dict.values():
             for s in value:
@@ -62,13 +64,15 @@ def rename_camels(dict):
     return dict
 
 def elim_unit_productions(dict):
-    for k, v in dict.items():
+    for v in dict.values():
         for s in v:
-            id = v.index(s)
-            if len(s)==1 and re.findall("[A-Z]", s):
-                v[id] = re.sub(s, dict.get(s), s)
+            if len(s) < 2 and s.isupper():
+                print(s)
+                print(dict.get(s))
+                v.remove(s)
+                v.append(dict.get(s))
 
     return dict
-print(remove_empty(rules))
-# print(rename_camels(remove_empty(rules)))
+# print(remove_empty(rules))
+# print(elim_unit_productions(rename_camels(remove_empty(rules))))
 
