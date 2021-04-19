@@ -67,10 +67,11 @@ def elim_unit_productions(dict):
     for v in dict.values():
         for s in v:
             if len(s) < 2 and s.isupper():
-                print(s)
-                print(dict.get(s))
+#                 print(s)
+#                 print(dict.get(s))
                 v.remove(s)
-                v.append(dict.get(s))
+                for it in dict.get(s): 
+                    v.append(it)
 
     return dict
 # print(remove_empty(rules))
