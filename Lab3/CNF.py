@@ -38,19 +38,37 @@ def remove_empty(dict):
     return rules
 
 def rename_camels(dict):
+    new_state = {}
     for key, value in dict.items():
         for s in value:
             # print(s)
-            camel = re.findall("[a-z][A-Z]", s)
-            if camel:
-                for i in range(len(camel)):
-                    sn = re.sub('bA', key+str(i+1), s, 1)
-            # print(s)
-            value.remove(s)
-            value.append(sn)
+            camel = re.findall("[a-z+][A-Z]", s, 1)
+            # print(camel)
+            for item in camel:
+                item = item[:1]
+                if item not in new_state.keys():
+                    new_state[item] = key+str(value.index(s))
+                    print(item, new_state[item])
+    for _ in range(2):
+        for value in dict.values():
+            for s in value:
+                if len(s)>1:
+                    id = value.index(s)
+                    for c in s:
+                        if c.islower():
+                            value[id] = re.sub(c, new_state[c], s)
+                            print(value[id])
 
     return dict
 
+def elim_unit_productions(dict):
+    for k, v in dict.items():
+        for s in v:
+            id = v.index(s)
+            if len(s)==1 and re.findall("[A-Z]", s):
+                v[id] = re.sub(s, dict.get(s), s)
+
+    return dict
 print(remove_empty(rules))
 # print(rename_camels(remove_empty(rules)))
 
