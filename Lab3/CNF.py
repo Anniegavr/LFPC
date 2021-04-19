@@ -74,6 +74,29 @@ def elim_unit_productions(dict):
                     v.append(it)
 
     return dict
+
+def split_long_productions(dict):
+    new_state = {}
+    for key, value in dict.items():
+        for s in value:
+            if (len(re.findall("[A-Z][0-9]", s))==1 and len(s)==3) or (len(re.findall("[A-Z][0-9]", s))>2 and len(s)>4):
+                #if the program finds patterns like S0A or S0A1B...:
+                item = item[:1]
+                if item not in new_state.keys():
+                    new_state[item] = key+str(value.index(s))
+            elif len(re.findall("[A-Z][0-9]", s)) in range(1,3) and len(s) in range(3, 5):
+                #We make sure productions like S0A1 aren't touched
+                continue
+    for _ in range(2):
+        for value in dict.values():
+            for s in value:
+                if len(s)>1:
+                    id = value.index(s)
+                    for c in s:
+                        if c.islower():
+                            value[id] = re.sub(c, new_state[c], s)
+
+    return dict
 # print(remove_empty(rules))
-# print(elim_unit_productions(rename_camels(remove_empty(rules))))
+# print(split_long_productions(elim_unit_productions(rename_camels(remove_empty(rules)))))
 
