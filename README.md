@@ -20,3 +20,11 @@ For this laboratory, Java seemed to offer more control over the tables used to d
 Lab 3: Conversion of a Context-Free Grammar to Chomsky's Normal Form
 ![image](https://user-images.githubusercontent.com/56108881/115160382-887c6f80-a0a0-11eb-9451-4f35066b1ef0.png)
 ![image](https://user-images.githubusercontent.com/56108881/115160396-9af6a900-a0a0-11eb-9294-129f10478260.png)
+
+
+Lab 4: Simple precedence parser
+Given a grammar, analyze the input using the Simple Precedence Parsing method
+First, we construct the first and the last lists of the productions and their rules;
+Then, we use these lists to construct the Wirth–Weber precedence relationship table (see the casual example below):
+![image](https://user-images.githubusercontent.com/56108881/119568906-bac37000-bdb6-11eb-8100-f2776ce2041d.png)
+Finally, we parse the string using a stack and the table above.
