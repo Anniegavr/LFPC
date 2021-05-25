@@ -26,5 +26,11 @@ Lab 4: Simple precedence parser
 Given a grammar, analyze the input using the Simple Precedence Parsing method
 First, we construct the first and the last lists of the productions and their rules;
 Then, we use these lists to construct the Wirth–Weber precedence relationship table (see the casual example below):
+
 ![image](https://user-images.githubusercontent.com/56108881/119568906-bac37000-bdb6-11eb-8100-f2776ce2041d.png)
+
 Finally, we parse the string using a stack and the table above.
+
+Input here: "adabcd"
+
+See what the parser yields at each step, by opening the program written and run with Jupyter Notebook (where the output is displayed at each step).
